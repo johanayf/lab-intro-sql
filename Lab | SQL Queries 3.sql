@@ -24,9 +24,14 @@ else 'Weekend'
 end as day_type
 from rental;
 
-##How many rentals were in the last month of activity?
+##1 How many rentals were in the last month of activity? 
 select count(rental_id) from rental 
-where (case when year(rental_date)=year(max(rental_date)) & 
-month(rental_date)=month(max(rental_date)) then rental_id
-else null
-end);
+where year(rental_date) = (select year(max(rental_date)) from rental) 
+and month(rental_date) = (select month(max(rental_date)) from rental);
+
+##2 How many rentals were in the last month of activity? 
+SELECT count(rental_id) 
+from 
+rental 
+where 
+rental_date >= DATE_ADD((select max(rental_date) from rental), INTERVAL -1 MONTH);
