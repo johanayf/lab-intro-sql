@@ -26,3 +26,4 @@ from rental_june as r
 left join customer as c
 on r.customer_id = c.customer_id
 group by r.customer_id;
+

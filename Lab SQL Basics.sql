@@ -1,6 +1,8 @@
 use bank;
 ##Get the id values of the first 5 clients from district_id with a value equals to 1.
-select client_id from client where district_id = "1"
+select client_id 
+from client 
+where district_id = "1"
 limit 5;
 
 ##In the client table, get an id value of the last client where the district_id equals to 72.
